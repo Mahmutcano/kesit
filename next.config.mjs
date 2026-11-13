@@ -17,6 +17,11 @@ const nextConfig = {
         { source: '/signup', destination: '/signup.html' },
         { source: '/forgot', destination: '/forgot.html' },
         { source: '/reset', destination: '/reset.html' },
+        { source: '/legal/terms', destination: '/legal/terms.html' },
+        { source: '/legal/privacy', destination: '/legal/privacy.html' },
+        { source: '/legal/kvkk', destination: '/legal/kvkk.html' },
+        { source: '/legal/cookies', destination: '/legal/cookies.html' },
+        { source: '/legal/copyright', destination: '/legal/copyright.html' },
       ],
       afterFiles: [],
       fallback: [

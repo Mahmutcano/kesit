@@ -1,0 +1,16 @@
+# Kesit Robots.txt
+User-agent: *
+Allow: /
+Allow: /legal/
+Allow: /login
+Allow: /signup
+
+# Private app and processing endpoints
+Disallow: /app
+Disallow: /api/
+Disallow: /output/
+Disallow: /work/
+Disallow: /reset
+Disallow: /forgot
+
+Sitemap: https://kesit.app/sitemap.xml

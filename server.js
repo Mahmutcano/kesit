@@ -523,7 +523,19 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET' && url.pathname.startsWith('/work/')) return serveStatic(req, res, WORK_DIR, decodeURIComponent(url.pathname.slice(6)));
     if (req.method === 'GET') {
       // Tanıtım sitesi: "/" ana sayfa, "/app" stüdyo (eski index.html)
-      const PAGES = { '/': 'landing.html', '/app': 'index.html', '/login': 'login.html', '/signup': 'signup.html', '/forgot': 'forgot.html', '/reset': 'reset.html' };
+      const PAGES = {
+        '/': 'landing.html',
+        '/app': 'index.html',
+        '/login': 'login.html',
+        '/signup': 'signup.html',
+        '/forgot': 'forgot.html',
+        '/reset': 'reset.html',
+        '/legal/terms': 'legal/terms.html',
+        '/legal/privacy': 'legal/privacy.html',
+        '/legal/kvkk': 'legal/kvkk.html',
+        '/legal/cookies': 'legal/cookies.html',
+        '/legal/copyright': 'legal/copyright.html',
+      };
       return serveStatic(req, res, PUBLIC, PAGES[url.pathname] || decodeURIComponent(url.pathname));
     }
     send(res, 404, { error: 'yok' });
