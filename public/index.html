@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kesit — klip stüdyosu</title>
+<meta name="description" content="Kesit stüdyo: videodan klip üret, altyazı ekle, ses ve yazı efektleri uygula.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#141413">
+<meta name="application-name" content="Kesit">
+<meta name="apple-mobile-web-app-title" content="Kesit">
+<link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kesit">
+<meta property="og:title" content="Kesit — Uzun videodan kliplere">
+<meta property="og:description" content="Kesit stüdyo: videodan klip üret, altyazı ekle, ses ve yazı efektleri uygula.">
+<meta property="og:image" content="/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kesit — Uzun videodan kliplere">
+<meta name="twitter:description" content="Kesit stüdyo: videodan klip üret, altyazı ekle, ses ve yazı efektleri uygula.">
+<meta name="twitter:image" content="/brand/og-image.png">
+<circle cx='50' cy='27' r='11' fill='none' stroke='black' stroke-width='7'/><path d='M50 38v28M50 66l-14 22M50 66l14 22M50 46l-18 10M50 46l20-12' stroke='black' stroke-width='7' stroke-linecap='round'/></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Geist:wght@400;500;600;700;800&family=Syne:wght@600;700;800&family=Montserrat:wght@700;900&family=Nunito:wght@600;800;900&family=Patrick+Hand&family=Permanent+Marker&family=Playfair+Display:wght@800;900&family=Press+Start+2P&display=swap" />
+<link rel="stylesheet" href="app.css" />
+<link rel="stylesheet" href="kesit.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
+<link rel="stylesheet" href="pro.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="rail" id="sidebar"></aside>
+
+  <main>
+    <section id="empty" class="hero" hidden>
+      <div class="hero-in">
+        <span class="eyebrow">Kesit</span>
+        <h1>Hazırlanıyor…</h1>
+        <button class="primary big" id="btnHeroNew" hidden>Başla</button>
+      </div>
+    </section>
+
+    <div id="workspace" hidden>
+      <!-- ================= KLİP ================= -->
+      <section class="view" data-view="clip">
+        <div id="clipHome" class="narrow">
+          <img class="home-mark" src="brand/kesit-mark.svg" alt="" width="44" height="44" />
+          <h1 class="display center" id="greet"></h1>
+          
+          <div class="composer shadowed" id="clipComposer">
+            <div class="url-row">
+              <button id="btnUpload" class="attach" title="Yükle" aria-label="Yükle"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 01-8.5-8.5l9.2-9.2a4 4 0 015.7 5.7l-9.2 9.2a2 2 0 01-2.8-2.8l8.5-8.5"/></svg></button>
+              <input id="clipUrl" placeholder="YouTube bağlantısı yapıştır ya da bir video dosyası yükle" />
+              <input type="file" id="clipFile" accept="video/*" hidden />
+            </div>
+            <div class="composer-bar">
+              <label class="pillin">Altyazı <select id="gTpl"><option value="default">Varsayılan</option><option value="minimal">Minimal</option><option value="neon">Neon</option><option value="podcast">Podcast</option><option value="none">Yok</option></select></label>
+              <label class="pillin">Font <select id="gFont"><option>Arial</option><option>Montserrat</option><option>Impact</option><option>Helvetica</option><option>Avenir Next</option><option>Futura</option><option>Georgia</option><option>Verdana</option></select></label>
+              <label class="pillin">Video dili <select id="gLang" data-no-i18n></select></label>
+              <label class="pillin">Kadraj <select id="gAspect"><option value="9:16">9:16</option><option value="1:1">1:1</option><option value="source">Orijinal</option></select></label>
+              <label class="pillin">Yerleşim <select id="gFit"><option value="fill">Doldur</option><option value="blur">Bulanık çerçeve</option><option value="camtop">Yayıncı: kamera üstte</option></select></label>
+              <label class="pillin">Takip <select id="gFollow"><option value="off">Kapalı</option><option value="face">Yüz</option><option value="ball">Top</option><option value="action">Hareket</option></select></label>
+              <label class="pillin" id="gCamWrap" hidden>Kamera <select id="gCamCorner"><option value="bl">Sol alt</option><option value="br">Sağ alt</option><option value="tl">Sol üst</option><option value="tr">Sağ üst</option></select></label>
+              <label class="pillin">Klip <input type="number" id="gCount" min="1" max="12" value="5" /></label>
+              <label class="pillin">Süre <select id="gLen"><option value="20">~20 sn</option><option value="30">~30 sn</option><option value="45" selected>~45 sn</option><option value="60">~60 sn</option><option value="90">~90 sn</option></select></label>
+              <label class="pillin swatch">Vurgu <input type="color" id="gColor" value="#FFD54A" /></label>
+              <label class="pillin">Çeşitlilik <select id="gVar"><option value="mix" selected>Her klip farklı</option><option value="same">Hepsi aynı</option></select></label>
+              <label class="pillin check2"><input type="checkbox" id="gHook" checked /> Hook başlığı</label>
+              <span class="grow"></span>
+              <button id="btnGen" class="send" title="Klipleri üret" aria-label="Klipleri üret"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+            </div>
+          </div>
+          <div class="presets" id="presets" role="group" aria-label="Hızlı başlangıç">
+            <button type="button" data-p="podcast" data-ico="mic"><span>Podcast</span></button>
+            <button type="button" data-p="shorts" data-ico="film"><span>Kısa klipler</span></button>
+            <button type="button" data-p="lecture" data-ico="subs"><span>Ders ve sunum</span></button>
+            <button type="button" data-p="hype" data-ico="spark"><span>Öne çıkanlar</span></button>
+          </div>
+          <small class="muted center block" id="clipNote">Video bu bilgisayara indirilir; en iyi anları bu bilgisayardaki yapay zekan seçer. Yalnızca kendi videolarını ya da kullanım iznin olan içerikleri kullan.</small>
+          <div class="sec-head"><h2 class="display">Son üretimler</h2></div>
+          <div id="recent" class="recent"></div>
+        </div>
+
+        <div id="clipTask" hidden>
+          <div class="task-head">
+            <button class="ghost" id="btnBackHome">← Geri</button>
+            <div class="grow"><h1 class="display" id="taskTitle"></h1><p class="muted" id="taskMeta"></p></div>
+          </div>
+          <div id="taskSteps" class="steps"></div>
+          <div id="clipWall" class="clipwall"></div>
+        </div>
+      </section>
+
+      <!-- ================= ANİMASYON ================= -->
+      <section class="view dead" data-view="film" hidden>
+        <div class="narrow wide">
+          <h1 class="display center">Film stüdyosu</h1>
+          <p class="center lead">Yatay, 10 dakika ve üstü, yapay zeka görselli sinematik videolar. Türü seç, konuyu yaz, gerisi otomatik.</p>
+          <div class="composer shadowed">
+            <div class="seg" id="filmMode">
+              <button data-v="topic" class="on">Konu vereyim, AI yazsın</button>
+              <button data-v="script">Script'im hazır</button>
+            </div>
+            <div class="seg" id="filmFmt">
+              <button data-v="toon" class="on">🕺 Hareketli çizgi film (tamamen token)</button>
+              <button data-v="photo">🖼 Görselli film (görsel kaynağı gerekir)</button>
+            </div>
+            <textarea id="filmTopic" rows="5" placeholder="Örn: Telefon bağımlılığı beynini nasıl değiştiriyor ve 30 günde nasıl kurtulursun?"></textarea>
+            <div class="composer-bar">
+              <label class="pillin">Süre (dk) <input type="number" id="filmMin" min="1" max="30" step="1" value="10" /></label>
+              <label class="pillin">Kalite <select id="filmQ"><option value="720">720p</option><option value="1080">1080p</option></select></label>
+              <label class="pillin check2" id="film3dWrap"><input type="checkbox" id="film3d" checked /> 3D görünüm</label>
+              <label class="pillin" id="filmLookWrap">Görünüm <select id="filmLook"><option value="auto">Otomatik (türe göre)</option><option value="moody">Karanlık sinema</option><option value="color">Renkli çizgi film</option></select></label>
+              <label class="pillin check2" id="filmBdWrap"><input type="checkbox" id="filmBd" /> Arka planları yapay zeka çizsin</label>
+              <label class="pillin" id="filmSrcWrap" hidden>Görsel kaynağı <select id="filmSrc"></select></label>
+              <label class="pillin" id="filmModelWrap" hidden>Model <select id="filmModel"></select></label>
+              <label class="pillin check2" id="filmRefWrap" hidden><input type="checkbox" id="filmRef" checked /> Tutarlı karakter</label>
+              <label class="pillin check2"><input type="checkbox" id="filmSub" checked /> Altyazı</label>
+              <span class="grow"></span>
+              <small class="muted" id="filmInfo"></small>
+              <button id="filmStop" class="ghost" hidden>Durdur</button>
+              <button id="filmGo" class="primary">Film üret 🎬</button>
+            </div>
+            <details class="film-adv" id="castBox"><summary>🎭 Kadro ve sesler — karakterler belli, sesleri belli</summary>
+              <p class="muted small">Boş bırakırsan yapay zeka karakterleri adlandırır; her birine <b>sabit bir ses</b> atanır ve film boyunca hep aynı kişi aynı sesle konuşur. İstersen kendin belirle:</p>
+              <div id="castRows" class="cast-rows"></div>
+              <button id="castAdd" class="ghost" type="button">+ Karakter ekle</button>
+              <label class="pillin check2"><input type="checkbox" id="castDialog" checked /> Karakterler birbiriyle konuşsun</label>
+            </details>
+            <details class="film-adv"><summary>Karakter tarifi ve ek yönerge (isteğe bağlı)</summary>
+              <textarea id="filmChar" rows="2" placeholder="Ana karakter (İngilizce): ör. a pale round-headed cartoon man in a black hoodie"></textarea>
+              <textarea id="filmExtra" rows="2" placeholder="Ek yönerge: ton, hedef kitle, mutlaka geçmesi gerekenler…"></textarea>
+            </details>
+            <div class="film-warn muted" id="filmWarn"></div>
+          </div>
+          <div class="sec-head"><h2>Video türü</h2><p class="muted">Tür; anlatım dilini, görsel stili ve karakteri belirler.</p></div>
+          <div id="genreGrid" class="genre-grid"></div>
+          <div class="sec-head" id="filmJobsHead" hidden><h2>Üretim</h2></div>
+          <div id="filmJobs" class="cards"></div>
+        </div>
+      </section>
+
+      <section class="view dead" data-view="anim" hidden>
+        <header class="chead">
+          <div class="avatar big" id="chAvatar"></div>
+          <div class="chead-txt">
+            <h1 class="display" id="chName"></h1>
+            <p id="chConcept"></p>
+          </div>
+          <nav class="tabs" id="tabs">
+            <button data-tab="create" class="on">Animasyon oluştur</button>
+            <button data-tab="channel">Kanal ayarları</button>
+          </nav>
+        </header>
+      <section class="tab" data-tab="create">
+        <div class="composer">
+          <div class="seg" id="inputMode">
+            <button data-v="script" class="on">Script'im hazır</button>
+            <button data-v="topic">Konu vereyim, AI yazsın</button>
+            <button data-v="topics">Konuyu da AI bulsun</button>
+          </div>
+          <textarea id="script" rows="7"></textarea>
+          <div id="ideas" class="ideas"></div>
+          <div class="composer-bar">
+            <label class="pillin">Adet <input type="number" id="count" min="1" max="10" value="1" /></label>
+            <label class="pillin">Dakika <input type="number" data-ch="minutes" min="0.25" max="30" step="0.25" /></label>
+            <label class="pillin">Format
+              <select data-ch="aspect"><option value="16:9">16:9 YouTube</option><option value="9:16">9:16 Shorts</option><option value="1:1">1:1 Kare</option></select>
+            </label>
+            <button class="pillbtn" data-goto="channel" id="sumVoice"></button>
+            <button class="pillbtn" data-goto="channel" id="sumTheme"></button>
+            <span class="grow"></span>
+            <small class="muted" id="goInfo"></small>
+            <button id="btnStop" class="ghost" hidden>Durdur</button>
+            <button id="btnGo" class="primary">Animasyon üret ✦</button>
+          </div>
+        </div>
+
+        <div class="sec-head">
+          <h2>Skill ve konsept</h2>
+          <p class="muted">Her kart ayrı bir video dili: yerleşim, hareket, yazı ve anlatım tarzı değişir. Üzerine gel, canlı izle.</p>
+        </div>
+        <div id="catChips" class="chips cats"></div>
+        <div id="skillInfo" class="skill-info"></div>
+        <div id="styleGrid" class="style-grid"></div>
+
+        <div class="sec-head" id="jobsHead" hidden><h2>Üretim</h2></div>
+        <div id="jobs" class="cards"></div>
+      </section>
+
+      <section class="tab" data-tab="channel" hidden>
+        <div class="form-grid">
+          <div class="panel">
+            <h3>Kanal</h3>
+            <label>Kanal adı <input data-ch="name" /></label>
+            <label>Konsept <textarea data-ch="concept" rows="3" placeholder="Bu kanal ne anlatıyor, kime hitap ediyor?"></textarea></label>
+            <label>Her videoya uygulanacak yönetmen notu <textarea data-ch="direction" rows="2" placeholder="ör: samimi ve esprili anlat, sonda soru sor"></textarea></label>
+            <div class="row">
+              <label class="grow">Anlatım dili <select data-ch="language" id="language"></select></label>
+              <label>Kalite <select data-ch="quality"><option value="720">720p</option><option value="1080">1080p</option></select></label>
+            </div>
+            <label>Filigran / kanal etiketi <input data-ch="watermark" placeholder="@kanalin" /></label>
+            <div class="row">
+              <button id="btnSuggest" class="ghost">✦ Konsepte göre AI önersin</button>
+              <span class="grow"></span>
+              <button id="btnDeleteChannel" class="danger">Kanalı sil</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Tema ve renkler</h3>
+            <div class="swatches" id="swatches"></div>
+            <div class="colors">
+              <label>Arka plan<input type="color" data-color="bg" /></label>
+              <label>Arka plan 2<input type="color" data-color="bg2" /></label>
+              <label>Çizgi<input type="color" data-color="stroke" /></label>
+              <label>Vurgu<input type="color" data-color="accent" /></label>
+              <label>Vurgu 2<input type="color" data-color="accent2" /></label>
+              <label>Metin<input type="color" data-color="text" /></label>
+            </div>
+            <div class="row">
+              <label class="grow">Yazı tipi <select id="font"><option value="hand">El yazısı</option><option value="marker">Keçeli kalem</option><option value="bold">Çizgi roman</option><option value="clean">Modern</option><option value="round">Yuvarlak</option><option value="serif">Klasik serif</option><option value="mono">8-bit</option></select></label>
+              <label class="grow">Doku <select data-ch="texture"><option value="">Temaya göre</option><option value="none">Yok</option><option value="paper">Kağıt</option><option value="grain">Film greni</option><option value="grid">Izgara</option><option value="chalk">Tebeşir</option><option value="whiteboard">Beyaz tahta</option><option value="crt">Retro TV</option></select></label>
+            </div>
+            <canvas id="themePreview" width="640" height="360"></canvas>
+          </div>
+
+          <div class="panel">
+            <h3>Ses</h3>
+            <label>Ses motoru
+              <select data-ch="ttsProvider" id="ttsProvider">
+                <option value="edge">Microsoft Neural (ücretsiz, 400+ ses)</option>
+                <option value="elevenlabs">ElevenLabs (API anahtarı)</option>
+                <option value="openai">OpenAI TTS (API anahtarı)</option>
+                <option value="none">Sessiz (sadece müzik)</option>
+              </select>
+            </label>
+            <div class="row">
+              <input id="voiceSearch" class="grow" placeholder="Ses ara (isim, ülke)" />
+              <select id="voiceGender"><option value="">Hepsi</option><option value="Female">Kadın</option><option value="Male">Erkek</option></select>
+            </div>
+            <label class="check"><input type="checkbox" id="allLangVoices" /> Tüm dillerin seslerini göster</label>
+            <select id="voice" size="7"></select>
+            <div class="row">
+              <label class="grow">Hız <small id="rateV"></small><input type="range" data-ch="rate" id="rate" min="-40" max="40" /></label>
+              <label class="grow">Ton <small id="pitchV"></small><input type="range" data-ch="pitch" id="pitch" min="-20" max="20" /></label>
+            </div>
+            <div class="row">
+              <button class="ghost" id="btnPreviewVoice">▶ Sesi dinle</button>
+              <label class="check"><input type="checkbox" data-ch="randomVoice" /> Her videoda farklı ses</label>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Müzik, altyazı, giriş</h3>
+            <div class="row">
+              <label class="grow">Arka plan müziği
+                <select data-ch="music" id="music"><option value="none">Yok</option><option value="ambient">Ambient</option><option value="upbeat">Neşeli</option><option value="lofi">Lo-fi</option><option value="dramatic">Dramatik</option><option value="mystery">Gizemli</option><option value="custom">Kendi dosyam…</option></select>
+              </label>
+              <label>Ses düzeyi <input type="range" data-ch="musicVol" min="0" max="1" step="0.05" /></label>
+            </div>
+            <input type="file" id="musicFile" accept="audio/*" hidden />
+            <label class="check"><input type="checkbox" data-ch="sfx" /> Geçiş efektleri (whoosh / pop)</label>
+            <hr />
+            <label class="check"><input type="checkbox" data-ch="subtitles" /> Altyazı ekle</label>
+            <div class="row">
+              <label class="grow">Altyazı stili
+                <select data-ch="subStyle"><option value="karaoke">Karaoke (kelime vurgulu)</option><option value="outline">Konturlu</option><option value="box">Kutulu</option><option value="minimal">Sade</option></select>
+              </label>
+              <label>Boyut <input type="range" data-ch="subScale" min="0.7" max="1.5" step="0.05" /></label>
+            </div>
+            <hr />
+            <div class="row">
+              <label class="check"><input type="checkbox" data-ch="intro" /> Başlık girişi</label>
+              <label class="check"><input type="checkbox" data-ch="outro" /> Abone ol kapanışı</label>
+              <label class="check"><input type="checkbox" data-ch="progress" /> İlerleme çubuğu</label>
+            </div>
+          </div>
+        </div>
+      </section>
+      </section>
+
+      <!-- ================= KÜTÜPHANE ================= -->
+      <section class="view" data-view="library" hidden>
+        <div class="sec-head"><h1 class="display">Kütüphane</h1><p class="muted" id="libPath"></p></div>
+        <div id="library" class="cards"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<dialog id="dlgEditor" class="wide">
+  <div class="editor">
+    <div class="ed-left">
+      <div class="vwrap" id="vwrap">
+        <video id="clipVideo" controls playsinline></video>
+        <div id="camBox" class="cam-box" hidden></div><div id="markDot" class="mark-dot" hidden></div>
+        <div id="cropFrame" class="crop-frame"><div id="hookOverlay" class="hook-overlay"></div><div id="subOverlay" class="sub-overlay"></div></div>
+      </div>
+      <small class="muted">Kesikli çerçeve klibin kadrajıdır. Oynatıcı kaynağın tamamını gösterir.</small>
+    </div>
+    <div class="ed-right">
+      <div class="row"><h2 class="display grow">Klibi düzenle</h2><button class="iconbtn" id="btnEdClose" title="Kapat">✕</button></div>
+      <label>Başlık <input id="edTitle" /></label>
+      <label>Hook başlığı (ilk saniyelerde üstte görünür) <input id="edHook" placeholder="Boş bırakırsan gösterilmez" /></label>
+      <div class="row">
+        <label>Başlangıç <input class="t" id="edStart" /></label><button class="ic" id="edSetS">⇤ şu an</button>
+        <label>Bitiş <input class="t" id="edEnd" /></label><button class="ic" id="edSetE">şu an ⇥</button>
+        <button class="ic" id="edPlay">▶ Kesiti oynat</button>
+      </div>
+      <label>Kadrajı kaydır (sol ↔ sağ) <input type="range" id="edFocus" min="0" max="1" step="0.01" /></label>
+      <div class="smartbox">
+        <div class="row">
+          <label class="grow">Akıllı takip <select id="edFollow"><option value="off">Kapalı (sabit kadraj)</option><option value="face">Yüzü takip et</option><option value="ball">Topu takip et</option><option value="action">Hareketi takip et</option><option value="mark-ball">İşaretlediğim top</option><option value="mark">İşaretlediğim kişi / nesne</option></select></label>
+          <label>Yakınlık <input type="range" id="edZoom" min="1" max="2" step="0.05" value="1" /></label>
+          <button class="ic" id="edTrack">Takibi hesapla</button>
+        </div>
+        <small id="edTrackMsg" class="muted"></small>
+        <div class="row">
+          <label class="grow">Yerleşim <select id="edFit"><option value="fill">Doldur</option><option value="blur">Bulanık çerçeve</option><option value="camtop">Yayıncı: kamera üstte, oyun altta</option></select></label>
+        </div>
+        <div class="row" id="edCamRow" hidden>
+          <label>Kamera nerede? <select id="edCamCorner"><option value="bl">Sol alt</option><option value="br">Sağ alt</option><option value="tl">Sol üst</option><option value="tr">Sağ üst</option></select></label>
+          <label class="grow">Kamera boyutu <input type="range" id="edCamSize" min="0.12" max="0.6" step="0.01" value="0.28" /></label>
+          <label>Oran <select id="edCamAR"><option value="16:9">16:9</option><option value="4:3">4:3</option></select></label>
+        </div>
+      </div>
+      <div class="row">
+        <label class="grow">Altyazı şablonu <select id="cSub"><option value="default">Varsayılan</option><option value="minimal">Minimal</option><option value="neon">Neon</option><option value="podcast">Podcast</option><option value="none">Yok</option></select></label>
+        <label class="grow">Font <select id="cFont"><option>Arial</option><option>Montserrat</option><option>Impact</option><option>Helvetica</option><option>Avenir Next</option><option>Futura</option><option>Georgia</option><option>Verdana</option></select></label>
+        <label>Kadraj <select id="cAspect"><option value="9:16">9:16</option><option value="1:1">1:1</option><option value="source">Orijinal</option></select></label>
+      </div>
+      <div class="row">
+        <label class="grow">Boyut <input type="range" id="cSize" min="0.6" max="1.6" step="0.05" /></label>
+        <label>Vurgu <input type="color" id="cColor" /></label>
+        <label>Konum <select id="cPos"><option value="bottom">Alt</option><option value="middle">Orta</option><option value="top">Üst</option></select></label>
+      </div>
+      <div class="row"><b class="grow">Altyazı satırları</b><button class="ic" id="edAddCue">＋ Satır</button><button class="ic" id="edRebuild" title="Transkriptten yeniden oluştur">↻ Sıfırla</button></div>
+      <div id="edCues" class="cues"></div>
+      <menu>
+        <span class="muted grow" id="edMsg"></span>
+        <button class="primary" id="edSave">Kaydet ve yeniden üret</button>
+      </menu>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlgChannel" class="mdlg">
+  <form method="dialog">
+    <header class="mhead"><h2>Yeni kanal</h2><button type="submit" value="cancel" formnovalidate class="iconbtn" aria-label="Kapat" data-ico="x"></button></header>
+    <div class="mbody">
+      <p class="muted">Kanalın konsepti, üretilen her videonun tonunu ve konusunu belirler.</p>
+      <label class="field">Kanal adı <input id="ncName" placeholder="ör: Zihin Atölyesi" required /></label>
+      <label class="field">Konsept <textarea id="ncConcept" rows="3" placeholder="ör: Psikoloji ve alışkanlıklar hakkında 1 dakikalık, esprili ve şaşırtıcı bilgiler. Hedef kitle 18-30 yaş."></textarea></label>
+      <div class="two">
+        <label class="field">Dil <select id="ncLang"></select></label>
+        <label class="field">Format <select id="ncAspect"><option value="16:9">16:9 YouTube</option><option value="9:16">9:16 Shorts</option><option value="1:1">1:1 Kare</option></select></label>
+      </div>
+      <label class="check"><input type="checkbox" id="ncAI" checked /> Stil, tema ve ilk konu fikirlerini yapay zeka önersin</label>
+    </div>
+    <footer class="mfoot">
+      <button value="cancel" class="ghost" formnovalidate>Vazgeç</button>
+      <button id="btnCreateChannel" class="primary" value="ok">Kanalı oluştur</button>
+    </footer>
+  </form>
+</dialog>
+
+<dialog id="keyDlg" class="keydlg">
+  <form method="dialog" id="keyForm">
+    <header class="mhead"><h2 id="kdTitle">API anahtarı</h2><button type="submit" class="iconbtn" aria-label="Kapat" value="cancel" data-ico="x"></button></header>
+    <div class="kd-body">
+      <p id="kdHint" class="muted"></p>
+      <label class="field" id="kdBaseWrap" hidden>Base URL<input id="kdBase" placeholder="https://openrouter.ai/api/v1" autocomplete="off" /></label>
+      <label class="field">API anahtarı<input id="kdKey" type="password" autocomplete="off" placeholder="" /></label>
+      <a id="kdLink" class="kd-link" target="_blank" rel="noopener">Anahtarı nereden alırım?</a>
+      <p class="muted kd-note">Anahtar yalnızca bu bilgisayarda saklanır, hiçbir yere gönderilmez.</p>
+    </div>
+    <footer class="mfoot"><button value="cancel" class="ghost">Vazgeç</button><button id="kdSave" class="primary" value="save">Kaydet ve kullan</button></footer>
+  </form>
+</dialog>
+
+<dialog id="settings" class="sdlg">
+  <form method="dialog">
+    <aside class="snav" role="tablist" aria-label="Ayarlar">
+      <h2>Ayarlar</h2>
+      <button type="button" role="tab" data-tab="general" class="on"><i data-ico="sliders"></i><span>Genel</span></button>
+      <button type="button" role="tab" data-tab="ai"><i data-ico="spark"></i><span>Yapay zeka</span></button>
+      <button type="button" role="tab" data-tab="voice"><i data-ico="mic"></i><span>Ses</span></button>
+      <button type="button" role="tab" data-tab="myvoice"><i data-ico="mic"></i><span>Sesim</span></button>
+      <button type="button" role="tab" data-tab="image"><i data-ico="image"></i><span>Görsel</span></button>
+      <button type="button" role="tab" data-tab="status"><i data-ico="pulse"></i><span>Sistem durumu</span></button>
+    </aside>
+    <div class="spane">
+      <header><h3 id="sTitle">Genel</h3><button type="submit" value="cancel" class="iconbtn" aria-label="Kapat" data-ico="x"></button></header>
+      <div class="sbody">
+        <section data-pane="general">
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>Arayüz dili</b><small>Menüler ve düğmeler bu dilde görünür.</small></div>
+              <select data-lang-select class="langsel" aria-label="Language"></select></div>
+            <div class="srow"><div class="sl"><b>Görünüm</b><small>Açık ya da koyu tema.</small></div>
+              <button type="button" class="ghost small" id="btnThemeS">Temayı değiştir</button></div>
+          </div>
+        </section>
+        <section data-pane="ai" hidden>
+          <p class="shint">Abonelik hesaplarının ayarı gerekmez. Aşağıdakiler yalnızca API anahtarıyla çalışmak istersen.</p>
+          <h4 class="sh"><span data-logo="anthropic-api"></span>Anthropic</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>API anahtarı</b></div><input name="anthropicKey" type="password" autocomplete="off" placeholder="sk-ant-…" /></div>
+            <div class="srow"><div class="sl"><b>Model</b></div><input name="anthropicModel" placeholder="claude-sonnet-5-5" /></div>
+          </div>
+          <h4 class="sh"><span data-logo="gemini-api"></span>Gemini</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>API anahtarı</b></div><input name="geminiKey" type="password" autocomplete="off" /></div>
+            <div class="srow"><div class="sl"><b>Model</b></div><input name="geminiModel" placeholder="gemini-2.5-flash" /></div>
+          </div>
+          <h4 class="sh"><span data-logo="openai-compatible"></span>OpenAI uyumlu</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>Base URL</b><small>OpenRouter, Ollama ve benzerleri.</small></div><input name="openaiBase" placeholder="https://openrouter.ai/api/v1" /></div>
+            <div class="srow"><div class="sl"><b>API anahtarı</b></div><input name="openaiKey" type="password" autocomplete="off" /></div>
+            <div class="srow"><div class="sl"><b>Model</b></div><input name="openaiModel" placeholder="gpt-4o-mini" /></div>
+          </div>
+          <h4 class="sh"><span data-logo="custom-cli"></span>Özel komut</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>Komut şablonu</b><small>Başka bir agent'ın komutunu çalıştırır.</small></div><input name="customCli" placeholder="ör: mycli ask --file {prompt_file}" /></div>
+          </div>
+        </section>
+        <section data-pane="voice" hidden>
+          <h4 class="sh">ElevenLabs</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>API anahtarı</b></div><input name="elevenKey" type="password" autocomplete="off" /></div>
+            <div class="srow"><div class="sl"><b>Model</b></div><input name="elevenModel" placeholder="eleven_multilingual_v2" /></div>
+          </div>
+          <h4 class="sh">OpenAI TTS</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>API anahtarı</b></div><input name="openaiTtsKey" type="password" autocomplete="off" /></div>
+          </div>
+        </section>
+        <section data-pane="myvoice" hidden>
+          <p class="shint">Kendi sesini kaydet ya da yükle. Klibi geliştirirken "Kendi sesin" efektiyle videoya koyabilir, orijinal sesi kapatabilirsin.</p>
+          <div id="voiceLib" class="voicelib"></div>
+        </section>
+        <section data-pane="image" hidden>
+          <h4 class="sh">Görsel oluşturucu API</h4>
+          <div class="sgroup">
+            <div class="srow"><div class="sl"><b>API anahtarı</b><small>Film stüdyosu görselleri için kredili bulut görsel servisi.</small></div><input name="muapiKey" type="password" autocomplete="off" /></div>
+          </div>
+        </section>
+        <section data-pane="status" hidden>
+          <div id="health" class="health sgroup"></div>
+        </section>
+      </div>
+      <footer>
+        <p class="muted">Bu bilgiler yalnızca bilgisayarındaki <code>config.local.json</code> dosyasına yazılır.</p>
+        <button value="cancel" class="ghost">Kapat</button>
+        <button value="save" id="btnSaveSettings" class="primary">Kaydet</button>
+      </footer>
+    </div>
+  </form>
+</dialog>
+
+<template id="jobTpl">
+  <article class="card job">
+    <div class="media">
+      <canvas class="pv"></canvas>
+      <img class="thumb" hidden alt="" />
+      <div class="media-wait"><span class="spin"></span></div>
+    </div>
+    <div class="card-body">
+      <h4 class="otitle"></h4>
+      <div class="stages">
+        <div class="stage" data-s="plan"><span>Senaryo</span><i></i></div>
+        <div class="stage" data-s="tts"><span>Ses</span><i></i></div>
+        <div class="stage" data-s="render"><span>Render</span><i></i></div>
+      </div>
+      <div class="msg muted"></div>
+      <div class="row preview" hidden>
+        <button class="ghost small play">▶ Önizle</button>
+        <input type="range" class="seek grow" min="0" max="1000" value="0" />
+        <button class="ghost small showthumb">Kapak</button>
+      </div>
+      <div class="links"></div>
+      <details class="edit" hidden>
+        <summary>Sahneleri düzenle ve yeniden render al</summary>
+        <textarea class="planjson" rows="9"></textarea>
+        <button class="ghost small rerender">↻ Yeniden render</button>
+      </details>
+    </div>
+  </article>
+</template>
+
+<script type="module" src="layout.js"></script>
+<script type="module">import { initI18n } from "./i18n.js"; initI18n();</script>
+<script type="module" src="app.js"></script>
+<script type="module" src="fx.js"></script>
+<script type="module" src="cookies.js"></script>
+<script type="module" src="select-ui.js"></script>
+<script type="module" src="color-ui.js"></script>
+<script type="module" src="dusk.js"></script>
+</body>
+</html>

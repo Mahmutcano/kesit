@@ -1,0 +1,130 @@
+/* Kesit — arayüz katmanı. Apple tarzı: malzeme/derinlik, tipografi, yay (spring) hareketi.
+   Hareket yalnızca transform/opacity ile, kullanıcı hareket azaltmayı seçtiyse kapalı. */
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Inter, Geist, system-ui, sans-serif;
+  --ink: #0B0B10;
+  --paper: #F5F5F7;
+  --ember-a: #FF8A3D;
+  --ember-b: #FF3D5A;
+  --ember: linear-gradient(135deg, var(--ember-a), var(--ember-b));
+  --brand: #FF5B2E;
+  --brand-fg: #fff;
+  --brand-soft: rgb(255 91 46 / 0.12);
+  --radius: 14px;
+  --canvas: #F5F5F7;
+  --bg: #FFFFFF;
+  --text: #1D1D1F;
+  --panel: #FFFFFF;
+  --panel2: #F0F0F3;
+  --primary: #1D1D1F;
+  --primary-fg: #FFFFFF;
+  --muted: #6E6E73;
+  --line: rgb(0 0 0 / 0.08);
+  --line2: rgb(0 0 0 / 0.22);
+  --sidebar: rgb(246 246 248 / 0.72);
+  --shadow: 0 0.5px 0 rgb(0 0 0 / 0.04), 0 8px 30px -10px rgb(0 0 0 / 0.14);
+  /* ağır yay hissi: hızlı başlar, yumuşak yerleşir */
+  --spring: cubic-bezier(0.22, 1.18, 0.36, 1);
+  --ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-family: var(--font);
+}
+.dark {
+  --brand: #FF6B3D;
+  --canvas: #000000;
+  --bg: #0B0B10;
+  --text: #F5F5F7;
+  --panel: #16161C;
+  --panel2: #1F1F27;
+  --primary: #F5F5F7;
+  --primary-fg: #0B0B10;
+  --muted: #9A9AA3;
+  --line: rgb(255 255 255 / 0.09);
+  --line2: rgb(255 255 255 / 0.24);
+  --sidebar: rgb(22 22 28 / 0.62);
+  --shadow: 0 0.5px 0 rgb(255 255 255 / 0.05) inset, 0 12px 40px -12px rgb(0 0 0 / 0.7);
+}
+html, body { font-family: var(--font); font-size: 15px; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+h1, h2, h3, h4, .display { font-family: var(--font); letter-spacing: -0.022em; }
+.display { font-weight: 700; }
+h1.display { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.06; letter-spacing: -0.034em; }
+.lead { font-size: 17px; color: var(--muted); letter-spacing: -0.01em; }
+
+/* ---- zemin: derinlik veren yumuşak ışık ---- */
+body { background: var(--canvas); }
+body::before { content: ""; position: fixed; inset: -20% -10% auto -10%; height: 70vh; pointer-events: none; z-index: 0;
+  background: radial-gradient(60% 60% at 70% 0%, rgb(255 91 46 / 0.10), transparent 70%), radial-gradient(50% 50% at 20% 10%, rgb(255 61 90 / 0.06), transparent 70%); }
+.app, main { position: relative; z-index: 1; }
+
+/* ---- yan menü: yarı saydam malzeme ---- */
+.rail { background: var(--sidebar); -webkit-backdrop-filter: saturate(1.8) blur(28px); backdrop-filter: saturate(1.8) blur(28px); border-right: 1px solid var(--line); padding: 18px 12px; gap: 6px; }
+.logo { display: flex; align-items: center; gap: 10px; padding: 2px 8px 14px; text-decoration: none; color: var(--text); font-family: var(--font); font-weight: 700; font-size: 21px; letter-spacing: -0.04em; }
+.logo .mark { width: 30px; height: 30px; border-radius: 8px; background: none; display: block; box-shadow: 0 4px 14px -4px rgb(255 61 90 / 0.55); transition: transform .5s var(--spring); }
+.logo:hover .mark { transform: rotate(-6deg) scale(1.06); }
+.nav { gap: 3px; }
+.nav button, .nav .navlink { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; border-radius: 10px; border: 0; background: none; color: var(--muted); font-weight: 500; font-size: 14.5px; cursor: pointer; text-decoration: none; text-align: left; transition: background .2s var(--ease), color .2s var(--ease), transform .3s var(--spring); }
+.nav .navlink i { font-style: normal; width: 16px; text-align: center; font-size: 13px; }
+.nav .navlink span { flex: 1; }
+.nav button:hover, .nav .navlink:hover { background: rgb(127 127 140 / 0.12); color: var(--text); }
+.nav button:active, .nav .navlink:active { transform: scale(0.97); }
+.nav button.on { background: var(--bg); color: var(--text); box-shadow: var(--shadow); }
+.nav button.on i { color: var(--brand); }
+.rail-foot { border-top: 1px solid var(--line); padding-top: 12px; }
+.rail-foot select, .rail-foot input { border-radius: 10px; }
+
+/* ---- kontroller ---- */
+button, .primary, .ghost { transition: transform .35s var(--spring), background .2s var(--ease), box-shadow .2s var(--ease), opacity .2s; }
+button:active:not(:disabled) { transform: scale(0.965); transition-duration: .08s; }
+.primary { background: var(--ember); color: #fff; border: 0; border-radius: 999px; font-weight: 600; box-shadow: 0 6px 18px -6px rgb(255 61 90 / 0.6); }
+.primary:hover:not(:disabled) { box-shadow: 0 10px 26px -8px rgb(255 61 90 / 0.7); transform: translateY(-1px); }
+.ghost { border-radius: 999px; border: 1px solid var(--line); background: rgb(127 127 140 / 0.08); }
+.ghost:hover { background: rgb(127 127 140 / 0.16); }
+input, select, textarea { border-radius: 10px; border: 1px solid var(--line); background: var(--panel); outline: none; transition: box-shadow .2s var(--ease), border-color .2s; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { box-shadow: 0 0 0 4px rgb(255 91 46 / 0.22); border-color: var(--brand); }
+
+/* ---- ana kompozer: cam gibi bir yüzey ---- */
+.narrow { max-width: 880px; padding-top: 7vh; }
+.composer { background: var(--panel); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--shadow); padding: 10px; transition: transform .6s var(--spring), box-shadow .3s; }
+.composer:focus-within { transform: translateY(-2px) scale(1.004); box-shadow: 0 0 0 4px rgb(255 91 46 / 0.14), var(--shadow); }
+.composer.drag { transform: scale(1.015); box-shadow: 0 0 0 4px rgb(255 91 46 / 0.35), var(--shadow); }
+.url-row input { border: 0; background: transparent; font-size: 17px; height: 52px; padding: 0 14px; box-shadow: none; }
+.url-row input:focus-visible { box-shadow: none; }
+.composer-bar { gap: 8px; padding: 4px 6px 4px; flex-wrap: wrap; }
+.pillin { background: rgb(127 127 140 / 0.1); border-radius: 999px; padding: 0 12px; height: 34px; font-size: 13px; color: var(--muted); border: 0; }
+.pillin select, .pillin input { border: 0; background: transparent; color: var(--text); font-weight: 600; }
+.send { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--ember); color: #fff; font-size: 18px; box-shadow: 0 8px 22px -8px rgb(255 61 90 / 0.8); }
+.send:hover { transform: scale(1.06); }
+
+/* ---- kartlar ---- */
+.card, .gen, .clipcard { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+.clipwall > *, .cards > *, .recent > * { animation: rise .6s var(--spring) both; }
+.clipwall > *:nth-child(2) { animation-delay: .05s } .clipwall > *:nth-child(3) { animation-delay: .1s } .clipwall > *:nth-child(4) { animation-delay: .15s }
+@keyframes rise { from { opacity: 0; transform: translateY(14px) scale(.97); } to { opacity: 1; transform: none; } }
+.gen { transition: transform .45s var(--spring), box-shadow .3s; }
+.gen:hover { transform: translateY(-3px) scale(1.01); }
+.stage i, .steps .done { color: var(--ok); }
+dialog { background: var(--panel); border: 1px solid var(--line); border-radius: 28px; box-shadow: 0 40px 100px -20px rgb(0 0 0 / 0.5); color: var(--text); }
+dialog::backdrop { background: rgb(0 0 0 / 0.36); -webkit-backdrop-filter: blur(14px) saturate(1.4); backdrop-filter: blur(14px) saturate(1.4); }
+dialog[open] { animation: pop .5s var(--spring); }
+@keyframes pop { from { opacity: 0; transform: scale(.94) translateY(10px); } to { opacity: 1; transform: none; } }
+.eyebrow { color: var(--brand); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+.dead { display: none !important; }
+
+/* ---- erişilebilirlik ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .rail { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--panel); }
+  dialog::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgb(0 0 0 / 0.6); }
+}
+@media (prefers-contrast: more) { :root { --line: rgb(0 0 0 / 0.4); } .dark { --line: rgb(255 255 255 / 0.5); } }
+@media (max-width: 860px) { .app { grid-template-columns: 1fr; } .rail { position: sticky; top: 0; flex-direction: row; overflow-x: auto; z-index: 5; } .rail-foot { display: none; } }
+
+#clipNote { margin-top: 14px; line-height: 1.5; }
+
+.langsw { display: inline-flex; background: rgb(127 127 140 / 0.14); border-radius: 999px; padding: 2px; gap: 2px; }
+.langsw button { border: 0; background: none; color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 4px 9px; border-radius: 999px; cursor: pointer; }
+.langsw button.on { background: var(--bg); color: var(--text); box-shadow: var(--shadow); }
+
+.rail-foot .user-row { flex-wrap: wrap; row-gap: 8px; }
+.rail-foot .user-row .langsw { margin-left: auto; }

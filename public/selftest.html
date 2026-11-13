@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="tr">
+<head><meta charset="utf-8"><title>Motor öz-testi</title></head>
+<body style="margin:0;background:#222;color:#eee;font-family:sans-serif">
+<div id="log">çalışıyor…</div>
+<canvas id="c" width="1280" height="720" style="max-width:100%"></canvas>
+<script type="module">
+// Motor öz-testi: /selftest.html?aspect=16:9&theme=pop  → sessiz örnek video üretir ve output/selftest klasörüne kaydeder
+import { buildTimeline, renderFrame, renderThumbnail, toSRT, STYLES } from './engine.js';
+import { resolveTheme } from './themes.js';
+import { mixAudio, exportVideo, estimateDuration } from './exporter.js';
+import { ACTIONS } from './vocab.js';
+const q = new URLSearchParams(location.search);
+const log = (m) => (document.getElementById('log').textContent = m);
+const aspect = q.get('aspect') || '16:9';
+const [W, H] = aspect === '9:16' ? [720, 1280] : aspect === '1:1' ? [1080, 1080] : [1280, 720];
+const style = { ...STYLES[q.get('style') || 'classic'], ...(q.get('two') ? {} : {}) };
+const theme = resolveTheme(q.get('theme') || style.theme);
+theme.locale = 'tr-TR';
+const profile = { text: q.get('text') || 'high', texture: q.get('texture') || theme.texture, transition: q.get('tr') || 'fade', camera: 'dynamic' };
+const props = ['lightbulb','money','clock','brain','rocket','heart','chart-up','globe','trophy','warning','phone','fire'];
+const bgs = ['plain','city','nature','office','space','home','classroom','lab','night','desert','ocean','road','stage'];
+const actions = q.get('all') ? Object.keys(ACTIONS) : ['wave','talk','think','idea','present','celebrate','sad','run','argue'];
+const plan = {
+  title: 'Neden Sabah Yorgun Uyanırız?',
+  thumbnail: { text: 'Neden Sabah Yorgun Uyanırız?', highlight: 'Yorgun', action: 'surprised', emotion: 'surprised', props: ['clock', 'question'] },
+  scenes: actions.map((a, i) => ({
+    narration: `Bu sahnede karakter ${a} hareketini yapıyor ve altyazı kelime kelime akıyor.`,
+    action: a, emotion: 'neutral', props: a === 'present' ? [] : [q.get('animals') ? ['pig','dog','cat','cow','sheep','chicken','campfire','chest','rock','sword'][i % 10] : props[i % props.length]].concat(i % 3 === 0 ? [props[(i + 4) % props.length]] : []),
+    keyword: i % 2 === 0 ? (i === 4 ? '%30' : a.toUpperCase()) : '', camera: ['zoom-in','static','pan-right','push','shake'][i % 5],
+    cast: [['soldier','gentleman'],['king','farmer'],['scientist','chef'],['pirate','wizard'],['knight','viking'],['doctor','police'],['cowboy','astronaut'],['roman','caveman'],['queen','lady'],['teacher','kid'],['worker','ninja'],['artist','detective'],['general','grandpa'],['businesswoman','athlete'],['suit','hoodie'],['student','casual']][i % 16], flags: i % 3 === 0 ? ['us','gb'] : i % 3 === 1 ? ['tr','de'] : [],
+    bg: bgs[i % bgs.length], characters: ['argue','hug','handshake'].includes(a) || i === 7 || q.get('two') ? 2 : 1,
+    chart: a === 'present' ? { type: 'bar', values: [3, 5, 8, 13], labels: ['2021','2022','2023','2024'] } : null,
+  })),
+};
+const fps = 30;
+const durs = plan.scenes.map((s) => Math.min(2.2, estimateDuration(s.narration, 'tr')));
+const tl = buildTimeline(plan, durs, { intro: true, outro: true, language: 'tr', aspect });
+const cfg = { theme, style, seed: Number(q.get('seed') || 7), profile: { text: 'medium', camera: 'dynamic' }, subtitles: true, subtitleStyle: q.get('sub') || 'karaoke', progress: true, watermark: '@kanalim' };
+const c = document.getElementById('c');
+c.width = W; c.height = H;
+const ctx = c.getContext('2d');
+const save = async (name, blob) => (await fetch(`/api/save?job=selftest-${q.get('style')||'classic'}-${aspect.replace(':','x')}&name=${name}`, { method: 'POST', body: blob })).json();
+try {
+  await document.fonts.ready;
+  // örnek kareler
+  const shots = [];
+  for (const s of tl.scenes) shots.push(s.start + Math.min(1.2, s.dur * 0.7));
+  for (let i = 0; i < shots.length; i++) {
+    renderFrame(ctx, W, H, tl, shots[i], cfg);
+    await save(`frame_${String(i).padStart(2, '0')}.png`, await new Promise((r) => c.toBlob(r)));
+  }
+  const tc = Object.assign(document.createElement('canvas'), { width: 1280, height: 720 });
+  renderThumbnail(tc.getContext('2d'), 1280, 720, plan, cfg);
+  await save('thumbnail.png', await new Promise((r) => tc.toBlob(r)));
+  await save('subtitles.srt', new Blob([toSRT(tl.cues)]));
+  if (q.get('novideo')) { log('DONE frames'); throw 0; }
+  const audio = await mixAudio(tl, {}, { music: 'upbeat', musicVolume: 0.6, sfx: true });
+  const t0 = performance.now();
+  const out = await exportVideo({ W, H, fps, tl, cfg, audio, onProgress: (p) => log('render ' + Math.round(p * 100) + '%') });
+  const r = await save('video.' + out.ext, out.blob);
+  log('DONE ' + JSON.stringify({ method: out.method, sec: ((performance.now() - t0) / 1000).toFixed(1), total: tl.total.toFixed(1), size: out.blob.size, url: r.url }));
+} catch (e) {
+  if (e !== 0) log('ERROR ' + e.message + '\n' + e.stack);
+}
+</script>
+</body>
+</html>

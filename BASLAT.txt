@@ -1,0 +1,5 @@
+Kesit — çalıştırma
+1) Bu klasörde terminal aç
+2) npm install
+3) npm run dev
+4) Tarayıcıda http://localhost:3000

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kesit — Yeni şifre</title>
+<meta name="description" content="Kesit, uzun videoları saniyeler içinde altyazılı, paylaşıma hazır kısa kliplere dönüştürür. 19 dilde otomatik altyazı, kendi sesin, müzik ve ekran yazısı efektleri.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#141413">
+<meta name="application-name" content="Kesit">
+<meta name="apple-mobile-web-app-title" content="Kesit">
+<link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kesit">
+<meta property="og:title" content="Kesit — Uzun videodan kliplere">
+<meta property="og:description" content="Kesit, uzun videoları saniyeler içinde altyazılı, paylaşıma hazır kısa kliplere dönüştürür. 19 dilde otomatik altyazı, kendi sesin, müzik ve ekran yazısı efektleri.">
+<meta property="og:image" content="/brand/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kesit — Uzun videodan kliplere">
+<meta name="twitter:description" content="Kesit, uzun videoları saniyeler içinde altyazılı, paylaşıma hazır kısa kliplere dönüştürür. 19 dilde otomatik altyazı, kendi sesin, müzik ve ekran yazısı efektleri.">
+<meta name="twitter:image" content="/brand/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+body{margin:0;background:#FAF9F5;}
+*{box-sizing:border-box}
+a{color:inherit;text-decoration:none}
+.lk{color:#B8532F;font-weight:500}.lk:hover{text-decoration:underline;text-underline-offset:3px}
+.bt{transition:transform .15s,background .15s}.bt:active{transform:scale(.98)}
+.bs:hover{background:#2B2A28}.bg:hover{background:#F3F2EC}
+.in{width:100%;height:46px;padding:0 14px;border-radius:10px;border:1px solid #D3D0C4;background:#FFFFFF;color:#141413;font:400 15px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;outline:none}
+.in:focus{border-color:#D97757;box-shadow:0 0 0 3px rgba(217,119,87,.2)}
+@keyframes rise{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+.rise{animation:rise .6s cubic-bezier(.2,.9,.3,1.05) both}
+@keyframes cd1{0%,10%{opacity:0;transform:translateY(14px) scale(.96)}16%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes cd2{0%,24%{opacity:0;transform:translateY(14px) scale(.96)}30%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+@keyframes cd3{0%,38%{opacity:0;transform:translateY(14px) scale(.96)}44%,88%{opacity:1;transform:none}96%,100%{opacity:0}}
+
+.cd1{animation:cd1 9s cubic-bezier(.2,.9,.3,1.05) infinite}.cd2{animation:cd2 9s cubic-bezier(.2,.9,.3,1.05) infinite}.cd3{animation:cd3 9s cubic-bezier(.2,.9,.3,1.05) infinite}
+@media (prefers-reduced-motion:reduce){.rise,.cd1,.cd2,.cd3{animation:none !important}}
+
+.lp{position:relative;display:inline-block}
+.lpb{display:flex;align-items:center;gap:7px;height:36px;padding:0 11px;border:1px solid #E7E5DC;border-radius:10px;background:#FFFFFF;color:#141413;font:500 13.5px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;cursor:pointer;transition:border-color .15s,background .15s}
+.lpb:hover{border-color:#CFCCC0}
+.lpb:focus-visible,.lpl button:focus-visible{outline:2px solid #D97757;outline-offset:2px}
+.lpb svg:last-child{transition:transform .18s ease}
+.lp[data-open] .lpb svg:last-child{transform:rotate(180deg)}
+.lpl{position:absolute;inset-inline-end:0;top:calc(100% + 6px);z-index:60;margin:0;padding:5px;list-style:none;min-width:190px;max-height:min(360px,70vh);overflow:auto;border:1px solid #E7E5DC;border-radius:12px;background:#FFFFFF;box-shadow:0 12px 32px rgba(20,20,19,.14);opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .14s ease,transform .14s ease,visibility .14s}
+.lp[data-open] .lpl{opacity:1;visibility:visible;transform:none}
+.lpl button{display:block;width:100%;padding:8px 11px;border:0;border-radius:8px;background:transparent;color:#141413;font:400 14px/1.2 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;text-align:start;cursor:pointer}
+.lpl button:hover{background:#F3F2EC}
+.lpl button[aria-pressed="true"]{background:#F3F2EC;font-weight:600}
+@media (prefers-reduced-motion:reduce){.lpl,.lpb svg:last-child{transition:none}}
+[data-if="sent"],[data-if="tooShort"],[data-if="mismatch"]{display:none}
+[data-if]{display:contents}
+html{scroll-behavior:smooth}
+
+</style>
+</head>
+<body data-title-tr="Kesit — Yeni şifre" data-title-en="Kesit — New password" data-page="reset">
+
+<div style="min-height:100vh;display:flex;flex-wrap:wrap;background:#FAF9F5;color:#141413;font-family:'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif">
+<main style="flex:1 1 480px;min-width:0;display:flex;flex-direction:column;padding:32px 48px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px"><a href="/" style="display:flex;align-items:center;gap:10px;font:600 19px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;letter-spacing:-.02em;color:#141413"><svg viewBox="0 0 120 120" width="30" height="30" role="img" aria-label="Kesit" style="display:block;flex:none"><rect width="120" height="120" rx="28" fill="#D97757"/><g fill="none" stroke-linecap="round" stroke-width="13"><path d="M44 30v60" stroke="#FAF9F5"/><path d="M52 62 79 31" stroke="#FAF9F5"/><path d="M58 70 80 91" stroke="#1F1E1D" transform="translate(3 1)"/></g></svg>Kesit</a><div class="lp" data-lp><button type="button" class="lpb" data-lp-btn aria-haspopup="listbox" aria-expanded="false" aria-label="Dil / Language"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.5 4 5.6 4 9s-1.4 6.5-4 9c-2.6-2.5-4-5.6-4-9s1.4-6.5 4-9Z"/></svg><span data-lp-label>English</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><ul class="lpl" role="listbox" aria-label="Dil / Language"><li role="none"><button type="button" role="option" data-lang="tr" aria-pressed="false">Türkçe</button></li><li role="none"><button type="button" role="option" data-lang="en" aria-pressed="false">English</button></li><li role="none"><button type="button" role="option" data-lang="de" aria-pressed="false">Deutsch</button></li><li role="none"><button type="button" role="option" data-lang="es" aria-pressed="false">Español</button></li><li role="none"><button type="button" role="option" data-lang="fr" aria-pressed="false">Français</button></li><li role="none"><button type="button" role="option" data-lang="ar" aria-pressed="false">العربية</button></li><li role="none"><button type="button" role="option" data-lang="ja" aria-pressed="false">日本語</button></li><li role="none"><button type="button" role="option" data-lang="pt" aria-pressed="false">Português</button></li><li role="none"><button type="button" role="option" data-lang="it" aria-pressed="false">Italiano</button></li><li role="none"><button type="button" role="option" data-lang="ru" aria-pressed="false">Русский</button></li><li role="none"><button type="button" role="option" data-lang="zh" aria-pressed="false">中文</button></li><li role="none"><button type="button" role="option" data-lang="ko" aria-pressed="false">한국어</button></li><li role="none"><button type="button" role="option" data-lang="nl" aria-pressed="false">Nederlands</button></li><li role="none"><button type="button" role="option" data-lang="pl" aria-pressed="false">Polski</button></li><li role="none"><button type="button" role="option" data-lang="hi" aria-pressed="false">हिन्दी</button></li><li role="none"><button type="button" role="option" data-lang="id" aria-pressed="false">Bahasa Indonesia</button></li><li role="none"><button type="button" role="option" data-lang="vi" aria-pressed="false">Tiếng Việt</button></li><li role="none"><button type="button" role="option" data-lang="th" aria-pressed="false">ไทย</button></li><li role="none"><button type="button" role="option" data-lang="uk" aria-pressed="false">Українська</button></li></ul></div></div>
+<div class="rise" style="flex:1;display:flex;flex-direction:column;justify-content:center;max-width:400px;width:100%;margin:0 auto;gap:28px;padding:32px 0"><div style="display:flex;flex-direction:column;gap:10px"><h1 style="margin:0;font:400 38px/1.1 'Newsreader', 'Iowan Old Style', Georgia, serif;letter-spacing:-.02em;color:#141413">Yeni şifre belirle</h1><p style="margin:0;font:400 15.5px/1.55 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#6B6A63">Hesabın için yeni bir şifre seç. En az 8 karakter olsun.</p></div><form style="display:flex;flex-direction:column;gap:18px" onsubmit="return false"><div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;justify-content:space-between"><label style="font:500 14px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#141413">Yeni şifre</label></div><input class="in" type="password" autocomplete="new-password" id="a"></div><div data-if="tooShort"><span style="font:500 13px/1.4 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#A93B2B;margin-top:-8px">Şifre en az 8 karakter olmalı.</span></div><div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center;justify-content:space-between"><label style="font:500 14px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#141413">Şifreyi tekrar yaz</label></div><input class="in" type="password" autocomplete="new-password" id="b"></div><div data-if="mismatch"><span style="font:500 13px/1.4 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#A93B2B;margin-top:-8px">Şifreler eşleşmiyor.</span></div><a class="bt bs" href="/login" style="display:flex;align-items:center;justify-content:center;height:48px;border-radius:12px;background:#141413;color:#FAF9F5;font:500 15px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;cursor:pointer;border:0;width:100%">Şifreyi kaydet</a></form><a class="lk" href="/login" style="font:500 14.5px/1 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif">Girişe dön</a></div></main><aside style="flex:1 1 420px;min-width:0;background:#F3F2EC;border-left:1px solid #E7E5DC;padding:48px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<h2 style="margin:0;max-width:11em;font:400 40px/1.1 'Newsreader', 'Iowan Old Style', Georgia, serif;letter-spacing:-.02em;color:#141413;text-wrap:balance">Uzun videon, paylaşmaya hazır klipler olsun.</h2>
+<div style="display:flex;gap:14px;max-width:420px"><div class="cd1" style="flex:1 1 0;min-width:0;aspect-ratio:9/16;border-radius:12px;background:#1F1E1D;position:relative;overflow:hidden"><div style="position:absolute;left:50%;top:26%;width:38%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12);transform:translateX(-50%)"></div><div style="position:absolute;left:50%;top:52%;width:70%;height:40%;border-radius:50% 50% 0 0;background:rgba(255,255,255,.1);transform:translateX(-50%)"></div><div style="position:absolute;left:8px;top:8px;height:20px;padding:0 7px;border-radius:10px;background:#D97757;color:#141413;font:600 11px/20px 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif">94</div><div style="position:absolute;left:6px;right:6px;bottom:12px;text-align:center;font:600 12px/1.25 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#fff">Sakin <span style="color:#FFB38F">kalmak</span> zor değil</div><div style="position:absolute;left:0;bottom:0;height:3px;width:60%;background:#D97757"></div></div><div class="cd2" style="flex:1 1 0;min-width:0;aspect-ratio:9/16;border-radius:12px;background:#2B2A28;position:relative;overflow:hidden"><div style="position:absolute;left:50%;top:26%;width:38%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12);transform:translateX(-50%)"></div><div style="position:absolute;left:50%;top:52%;width:70%;height:40%;border-radius:50% 50% 0 0;background:rgba(255,255,255,.1);transform:translateX(-50%)"></div><div style="position:absolute;left:8px;top:8px;height:20px;padding:0 7px;border-radius:10px;background:#D97757;color:#141413;font:600 11px/20px 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif">88</div><div style="position:absolute;left:6px;right:6px;bottom:12px;text-align:center;font:600 12px/1.25 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#fff">Bunu <span style="color:#FFB38F">kimse</span> söylemiyor</div><div style="position:absolute;left:0;bottom:0;height:3px;width:60%;background:#D97757"></div></div><div class="cd3" style="flex:1 1 0;min-width:0;aspect-ratio:9/16;border-radius:12px;background:#33302C;position:relative;overflow:hidden"><div style="position:absolute;left:50%;top:26%;width:38%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.12);transform:translateX(-50%)"></div><div style="position:absolute;left:50%;top:52%;width:70%;height:40%;border-radius:50% 50% 0 0;background:rgba(255,255,255,.1);transform:translateX(-50%)"></div><div style="position:absolute;left:8px;top:8px;height:20px;padding:0 7px;border-radius:10px;background:#D97757;color:#141413;font:600 11px/20px 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif">81</div><div style="position:absolute;left:6px;right:6px;bottom:12px;text-align:center;font:600 12px/1.25 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#fff">İşte <span style="color:#FFB38F">asıl</span> mesele</div><div style="position:absolute;left:0;bottom:0;height:3px;width:60%;background:#D97757"></div></div></div>
+<span style="font:400 14px/1.6 'Geist', -apple-system, 'Segoe UI', system-ui, sans-serif;color:#6B6A63">Kesit kendi bilgisayarında çalışır. Videoların senin kalır.</span></aside></div>
+
+<script type="module" src="site.js"></script>
+</body>
+</html>
