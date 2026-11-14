@@ -1,6 +1,9 @@
-import { redirect } from 'next/navigation';
+import { AiStudio } from '@/components/workspace/ai-studio';
 
-// "/" normalde next.config.mjs içindeki yönlendirmeyle public/landing.html'e gider; bu dosya yedek.
 export default function Home() {
-  redirect('/landing.html');
+  return (
+    <main className="min-h-screen bg-cream py-8">
+      <AiStudio />
+    </main>
+  );
 }

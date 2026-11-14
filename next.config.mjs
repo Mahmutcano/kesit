@@ -11,7 +11,7 @@ const nextConfig = {
     return {
       // "/" tanıtım sitesi, "/app" Kesit stüdyosu (public/index.html)
       beforeFiles: [
-        { source: '/', destination: '/landing.html' },
+        { source: '/landing', destination: '/landing.html' },
         { source: '/app', destination: '/index.html' },
         { source: '/login', destination: '/login.html' },
         { source: '/signup', destination: '/signup.html' },
