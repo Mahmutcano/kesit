@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fcf9e8;
+  --color-charcoal: #201b21;
+  --color-accent: #d97757;
+}
+
+:root {
+  --color-cream: #fcf9e8;
+  --color-charcoal: #201b21;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+}

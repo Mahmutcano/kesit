@@ -10,3 +10,6 @@ next-env.d.ts
 tsconfig.tsbuildinfo
 *.tgz
 _to_delete/
+.env
+.env.local
+.env*.local

@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import './globals.css';
+import { Providers } from '@/components/providers/heroui-provider';
 
   export const metadata: Metadata = {
     metadataBase: new URL('https://kesit.app'),
@@ -79,8 +81,10 @@ import type { ReactNode } from 'react';
 
   export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="tr">
-          <body>{children}</body>
-        </html>
-        );
-}
+      <html lang="tr" className="dark:bg-[#201b21]">
+        <body className="bg-cream text-charcoal min-h-screen antialiased">
+          <Providers>{children}</Providers>
+        </body>
+      </html>
+    );
+  }
