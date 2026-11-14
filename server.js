@@ -900,21 +900,19 @@ const routes = {
           costume: c.costume,
           gender: c.gender || list.find((x) => x.id === c.id)?.gender,
         }));
-      list = list
-        .slice(0, 4)
-        .map((c, i) => ({
-          id: String(c.id || "c" + (i + 1)),
-          name: String(c.name || "Karakter " + (i + 1)).slice(0, 20),
-          costume: COSTUME_NAMES.includes(c.costume)
-            ? c.costume
-            : ["casual", "suit", "hoodie", "doctor"][i % 4],
-          gender: ["male", "female", "child"].includes(c.gender)
-            ? c.gender
-            : i % 2
-              ? "female"
-              : "male",
-          personality: String(c.personality || "").slice(0, 60),
-        }));
+      list = list.slice(0, 4).map((c, i) => ({
+        id: String(c.id || "c" + (i + 1)),
+        name: String(c.name || "Karakter " + (i + 1)).slice(0, 20),
+        costume: COSTUME_NAMES.includes(c.costume)
+          ? c.costume
+          : ["casual", "suit", "hoodie", "doctor"][i % 4],
+        gender: ["male", "female", "child"].includes(c.gender)
+          ? c.gender
+          : i % 2
+            ? "female"
+            : "male",
+        personality: String(c.personality || "").slice(0, 60),
+      }));
       if (!list.length)
         list = [
           {
