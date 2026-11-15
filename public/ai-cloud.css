@@ -1,0 +1,344 @@
+/* Kesit — Yapay Zeka Mod Seçici, Kredi Rozeti ve Ödeme Modalları */
+
+.credit-rail-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 2px;
+  margin: 2px 0 6px;
+}
+
+.credit-rail-row[hidden] {
+  display: none !important;
+}
+
+.ai-mode-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ai-mode-header .seg {
+  display: inline-flex;
+  align-items: center;
+  background: var(--panel2, #F3F2EC);
+  border: 1px solid var(--line, #E7E5DC);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.ai-mode-header .seg button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--muted, #6B6A63);
+  font: 500 13px/1 'Geist', -apple-system, system-ui, sans-serif;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.ai-mode-header .seg button:hover {
+  color: var(--text, #141413);
+}
+
+.ai-mode-header .seg button.on {
+  background: var(--bg, #FFFFFF);
+  color: var(--text, #141413);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.credit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  background: rgba(217, 119, 87, 0.12);
+  color: #D97757;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.credit-pill svg.ico {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.2;
+}
+
+.ai-mode-header .seg button svg.ico {
+  width: 15px;
+  height: 15px;
+  stroke-width: 1.8;
+}
+
+.credit-pill b {
+  font-weight: 800;
+}
+
+.btn-buy-credits {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(217, 119, 87, 0.35);
+  background: rgba(217, 119, 87, 0.08);
+  color: #D97757;
+  font: 600 12.5px/1 'Geist', -apple-system, system-ui, sans-serif;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.btn-buy-credits:hover {
+  background: #D97757;
+  color: #FAF9F5;
+  border-color: #D97757;
+}
+
+.btn-buy-credits:active {
+  transform: scale(0.97);
+}
+
+/* BYOK Giriş Kutusu */
+.byok-box {
+  width: 100%;
+  background: var(--panel2, #F3F2EC);
+  border: 1px solid var(--line, #E7E5DC);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  animation: slideDown .2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.byok-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.byok-input-row input {
+  flex: 1;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #D3D0C4);
+  background: var(--bg, #FFFFFF);
+  color: var(--text, #141413);
+  font: 400 13px/1 'Geist Mono', monospace;
+  outline: none;
+}
+
+.byok-input-row input:focus {
+  border-color: #D97757;
+  box-shadow: 0 0 0 2px rgba(217, 119, 87, 0.2);
+}
+
+.byok-save-btn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 0;
+  background: #141413;
+  color: #FAF9F5;
+  font: 500 13px/1 'Geist', -apple-system, system-ui, sans-serif;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+
+.byok-save-btn:hover {
+  opacity: 0.9;
+}
+
+.byok-hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: var(--muted, #6B6A63);
+}
+
+/* Modal Stilleri */
+dialog.cloud-modal {
+  width: min(520px, 94vw);
+  padding: 28px;
+  border-radius: 24px;
+  border: 1px solid var(--line, #E7E5DC);
+  background: var(--bg, #FAF9F5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  color: var(--text, #141413);
+}
+
+dialog.cloud-modal::backdrop {
+  background: rgba(20, 20, 19, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font: 500 24px/1.2 'Newsreader', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.modal-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: var(--muted, #6B6A63);
+  line-height: 1.45;
+}
+
+.close-btn {
+  border: 0;
+  background: transparent;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--muted, #6B6A63);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.close-btn:hover {
+  background: var(--panel2, #F3F2EC);
+  color: var(--text, #141413);
+}
+
+/* Paket Kartları */
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.package-card {
+  position: relative;
+  border: 1.5px solid var(--line, #E7E5DC);
+  border-radius: 16px;
+  padding: 16px 14px;
+  background: var(--panel, #FFFFFF);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all .18s ease;
+}
+
+.package-card:hover {
+  border-color: #D97757;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(217, 119, 87, 0.12);
+}
+
+.package-card.popular {
+  border-color: #D97757;
+  background: #FFFDFC;
+}
+
+.package-badge {
+  position: absolute;
+  top: -9px;
+  background: #D97757;
+  color: #FFF;
+  font: 700 10px/1 'Geist', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.package-credits {
+  font: 700 22px/1.1 'Geist', sans-serif;
+  color: var(--text, #141413);
+  margin-top: 6px;
+}
+
+.package-credits small {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted, #6B6A63);
+  margin-top: 2px;
+}
+
+.package-price {
+  margin-top: 12px;
+  font: 600 17px/1 'Geist', sans-serif;
+  color: #D97757;
+}
+
+.package-buy-btn {
+  width: 100%;
+  margin-top: 14px;
+  height: 34px;
+  border-radius: 8px;
+  border: 0;
+  background: #141413;
+  color: #FAF9F5;
+  font: 500 12.5px/1 'Geist', sans-serif;
+  cursor: pointer;
+  transition: opacity .15s;
+}
+
+.package-card:hover .package-buy-btn {
+  background: #D97757;
+}
+
+/* Google Sign-in Butonu */
+.btn-google-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--line, #D3D0C4);
+  background: #FFFFFF;
+  color: #141413;
+  font: 500 15px/1 'Geist', -apple-system, system-ui, sans-serif;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .12s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-google-auth:hover {
+  background: #F8F7F4;
+  border-color: #BEBBB0;
+}
+
+.btn-google-auth:active {
+  transform: scale(0.98);
+}
+
+.btn-google-auth svg {
+  flex: none;
+}
+

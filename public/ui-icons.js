@@ -30,6 +30,7 @@ export const ICONS = {
   pulse: S('<path d="M3 12h4l2.5-6 4 12 2.5-6H21"/>'),
   x: S('<path d="M6 6l12 12M18 6 6 18"/>'),
   user: S('<circle cx="12" cy="8.5" r="3.6"/><path d="M4.5 20c.8-3.6 3.8-5.5 7.5-5.5s6.7 1.9 7.5 5.5"/>'),
+  key: S('<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l2.5 2.5M14 9l2 2"/>'),
 };
 
 const L = (inner, w = 20) => `<svg class="logo-ai" viewBox="0 0 24 24" width="${w}" height="${w}" aria-hidden="true" focusable="false">${inner}</svg>`;
@@ -38,6 +39,7 @@ const GRAD = (id, a, b, c) => `<defs><linearGradient id="${id}" x1="3" y1="3" x2
 const IMG = (f, w = 20) => `<img class="logo-ai" src="/brand/ai/${f}.svg" width="${w}" height="${w}" alt="">`;
 // Yapay zeka kaynakları: kendi işaretlerine yakın basitleştirilmiş logolar
 export const PROVIDER_LOGO = {
+  'kesit-ai': '<img class="logo-ai" src="/brand/kesit-mark.svg" width="20" height="20" alt="">',
   'anthropic-sub': IMG('claude'),
   'anthropic-api': IMG('anthropic'),
   'google-sub': IMG('google'),

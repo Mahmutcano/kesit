@@ -1,9 +1,5 @@
-import { AiStudio } from '@/components/workspace/ai-studio';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-cream py-8">
-      <AiStudio />
-    </main>
-  );
+  redirect('/landing.html');
 }

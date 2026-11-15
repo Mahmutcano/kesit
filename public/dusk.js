@@ -1,3 +1,5 @@
+import { ICONS, providerLogo } from './ui-icons.js';
+
 // Çekim tahtası: gönderince tahta "klak" yapar; bağlantı yazılınca gönder düğmesi tam görünür.
 const url = document.getElementById('clipUrl');
 const send = document.getElementById('btnGen');
@@ -8,9 +10,7 @@ const sync = () => send?.classList.toggle('ready', !!url?.value.trim());
 url?.addEventListener('input', sync);
 setInterval(sync, 600); sync();
 
-
 // Kompozer hücrelerine ikon: etiket metni ikonla birlikte tek satırda
-import { ICONS } from './ui-icons.js';
 const CELL_ICON = { gTpl: 'subs', gFont: 'type', gLang: 'globe', gAspect: 'frame', gCount: 'film', gLen: 'timer', gColor: 'swatch', gVar: 'shuffle', gHook: 'hook' };
 document.querySelectorAll('#clipComposer .pillin').forEach((lab) => {
   const ctl = lab.querySelector('select, input'); const ic = ICONS[CELL_ICON[ctl?.id]];
@@ -27,8 +27,7 @@ const paintTheme = () => { if (tb) tb.innerHTML = document.documentElement.class
 paintTheme(); tb?.addEventListener('click', () => setTimeout(paintTheme, 0));
 
 // Ayarlar penceresi: sekmeler, ikonlar, logolar
-import { providerLogo } from './ui-icons.js';
-document.querySelectorAll('.mdlg [data-ico]').forEach((el) => { el.innerHTML = ICONS[el.dataset.ico] || ''; });
+document.querySelectorAll('[data-ico]').forEach((el) => { if (!el.innerHTML.trim()) el.innerHTML = ICONS[el.dataset.ico] || ''; });
 const dlg = document.getElementById('settings');
 if (dlg) {
   dlg.querySelectorAll('[data-ico]').forEach((el) => { el.innerHTML = ICONS[el.dataset.ico] || ''; });

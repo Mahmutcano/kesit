@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="kesit.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
 <link rel="stylesheet" href="pro.css" />
+<link rel="stylesheet" href="ai-cloud.css" />
 </head>
 <body>
 <div class="app">
@@ -66,7 +67,7 @@
               <label class="pillin">Video dili <select id="gLang" data-no-i18n></select></label>
               <label class="pillin">Kadraj <select id="gAspect"><option value="9:16">9:16</option><option value="1:1">1:1</option><option value="source">Orijinal</option></select></label>
               <label class="pillin">Yerleşim <select id="gFit"><option value="fill">Doldur</option><option value="blur">Bulanık çerçeve</option><option value="camtop">Yayıncı: kamera üstte</option></select></label>
-              <label class="pillin">Takip <select id="gFollow"><option value="off">Kapalı</option><option value="face">Yüz</option><option value="ball">Top</option><option value="action">Hareket</option></select></label>
+              <label class="pillin">Takip <select id="gFollow"><option value="auto" selected>Otomatik (AI)</option><option value="ball">Top (Futbol/Spor)</option><option value="face">Yüz (Konuşmacı)</option><option value="action">Hareket</option><option value="off">Kapalı (Sabit)</option></select></label>
               <label class="pillin" id="gCamWrap" hidden>Kamera <select id="gCamCorner"><option value="bl">Sol alt</option><option value="br">Sağ alt</option><option value="tl">Sol üst</option><option value="tr">Sağ üst</option></select></label>
               <label class="pillin">Klip <input type="number" id="gCount" min="1" max="12" value="5" /></label>
               <label class="pillin">Süre <select id="gLen"><option value="20">~20 sn</option><option value="30">~30 sn</option><option value="45" selected>~45 sn</option><option value="60">~60 sn</option><option value="90">~90 sn</option></select></label>
@@ -386,6 +387,36 @@
   </form>
 </dialog>
 
+<!-- ================= KREDİ YÜKLEME MODALI (LEMON SQUEEZY) ================= -->
+<dialog id="topupModal" class="cloud-modal">
+  <div class="modal-header">
+    <div>
+      <h2>Kredi Paketi Yükle</h2>
+      <p>Kesit Bulut AI ile kesintisiz ve hızlı klip üretin. Kredilerin son kullanma tarihi yoktur.</p>
+    </div>
+    <button type="button" class="iconbtn" aria-label="Kapat" onclick="document.getElementById('topupModal').close()" data-ico="x"></button>
+  </div>
+  <div class="package-grid">
+    <div class="package-card" data-package="starter">
+      <div class="package-credits">50 <small>Kredi</small></div>
+      <div class="package-price">$5</div>
+      <button type="button" class="package-buy-btn" data-package="starter">Satın Al</button>
+    </div>
+    <div class="package-card popular" data-package="pro">
+      <span class="package-badge">En Popüler</span>
+      <div class="package-credits">200 <small>Kredi</small></div>
+      <div class="package-price">$15</div>
+      <button type="button" class="package-buy-btn" data-package="pro">Satın Al</button>
+    </div>
+    <div class="package-card" data-package="scale">
+      <div class="package-credits">600 <small>Kredi</small></div>
+      <div class="package-price">$39</div>
+      <button type="button" class="package-buy-btn" data-package="scale">Satın Al</button>
+    </div>
+  </div>
+  <small style="color:var(--muted);display:block;text-align:center">Güvenli ödeme Lemon Squeezy altyapısıyla 256-bit SSL ile korunmaktadır.</small>
+</dialog>
+
 <dialog id="settings" class="sdlg">
   <form method="dialog">
     <aside class="snav" role="tablist" aria-label="Ayarlar">
@@ -503,5 +534,6 @@
 <script type="module" src="select-ui.js"></script>
 <script type="module" src="color-ui.js"></script>
 <script type="module" src="dusk.js"></script>
+<script type="module" src="ai-cloud.js"></script>
 </body>
 </html>

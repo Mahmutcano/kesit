@@ -265,9 +265,8 @@ export function AiStudio() {
             <span>İstem & Talimatınız</span>
           </div>
           <span
-            className={`font-mono text-[11px] ${
-              prompt.length > MAX_PROMPT_LENGTH ? 'text-rose-600 font-bold' : 'text-charcoal/50'
-            }`}
+            className={`font-mono text-[11px] ${prompt.length > MAX_PROMPT_LENGTH ? 'text-rose-600 font-bold' : 'text-charcoal/50'
+              }`}
           >
             {prompt.length.toLocaleString()} / {MAX_PROMPT_LENGTH.toLocaleString()} karakter
           </span>

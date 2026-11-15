@@ -8,13 +8,19 @@ export const auth = betterAuth({
   secret: process.env.BETTER_AUTH_SECRET || 'dev_secret_must_be_32_bytes_long_entropy_key_123',
   baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
   socialProviders: {
-    google: {
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-    },
+    ...(process.env.GOOGLE_CLIENT_ID &&
+    !process.env.GOOGLE_CLIENT_ID.includes('your_google_oauth') &&
+    process.env.GOOGLE_CLIENT_SECRET
+      ? {
+          google: {
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+          },
+        }
+      : {}),
   },
   emailAndPassword: {
-    enabled: false,
+    enabled: true,
   },
   user: {
     additionalFields: {
@@ -77,3 +83,4 @@ export const auth = betterAuth({
 });
 
 export type Session = typeof auth.$Infer.Session;
+

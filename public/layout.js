@@ -24,9 +24,13 @@ export const Sidebar = () => `
     <button id="btnNewGen"></button><div id="channelList"></div><button id="btnNewChannel"></button>
   </div>
   <div class="rail-foot">
-    <label>Yapay zeka (bu bilgisayardaki hesabın)
+    <label>Yapay zeka
       <select id="provider"></select>
     </label>
+    <div id="kesitCreditWrap" class="credit-rail-row" hidden>
+      <span class="credit-pill" id="creditPill"><i class="ico" data-ico="spark"></i><b id="creditCount">5</b> Kredi</span>
+      <button type="button" id="btnBuyCredits" class="btn-buy-credits" title="Kredi Paketi Satın Al">+ Kredi Al</button>
+    </div>
     <label id="modelWrap">Model
       <select id="model"></select>
     </label>

@@ -79,11 +79,10 @@ export function TopupModal({ isOpen, onClose, currentBalance = 0 }: TopupModalPr
               <div
                 key={pkg.id}
                 onClick={() => setSelectedPkg(pkg.id)}
-                className={`relative cursor-pointer transition-all rounded-2xl p-4 border flex flex-col justify-between ${
-                  isSelected
+                className={`relative cursor-pointer transition-all rounded-2xl p-4 border flex flex-col justify-between ${isSelected
                     ? 'border-[#201b21] bg-[#FFFFFF] shadow-md scale-[1.02]'
                     : 'border-[#201b21]/10 bg-[#FFFFFF]/60 hover:border-[#201b21]/30 hover:bg-[#FFFFFF]'
-                }`}
+                  }`}
               >
                 {pkg.popular && (
                   <div className="absolute -top-2.5 left-1/2 -translate-x-1/2">

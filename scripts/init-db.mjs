@@ -12,3 +12,4 @@ try {
   console.error('[DB Migration Error]:', err.message);
   process.exit(1);
 }
+

@@ -40,7 +40,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
         <div className="flex flex-col items-center text-center gap-1.5 pt-2">
           <div className="w-12 h-12 rounded-2xl bg-[#201b21] flex items-center justify-center text-cream mb-1 shadow-md">
-            <Sparkles className="w-6 h-6 text-accent" />
+            <img src="/brand/kesit-mark.svg" alt="Kesit" className="w-7 h-7" />
           </div>
           <h2 className="text-xl font-serif font-medium text-charcoal">
             Yönetilen Altyapı ile Üret

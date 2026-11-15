@@ -448,3 +448,24 @@ if (page === "reset") {
   }
 }
 setLang(lang, false);
+
+// Google ile Giriş / Kayıt
+document.getElementById("btnGoogleAuth")?.addEventListener("click", async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch("/api/auth/sign-in/social", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        provider: "google",
+        callbackURL: window.location.origin + "/app",
+      }),
+    });
+    const data = await res.json();
+    if (data?.url) {
+      window.location.href = data.url;
+      return;
+    }
+  } catch (err) {}
+  window.location.href = "/app";
+});

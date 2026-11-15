@@ -1,7 +1,7 @@
 {
   "name": "stickman-motion-studio",
   "version": "1.1.0",
-  "description": "Kesit — uzun videolardan klip stüdyosu. Next.js arayüzü + yerel Node API (kendi Claude Code / Antigravity hesabını kullanır).",
+  "description": "Kesit — uzun videolardan klip stüdyosu. Next.js arayüzü + yerel Node API (Antigravity Google Gemini hesabını kullanır).",
   "type": "module",
   "main": "server.js",
   "scripts": {

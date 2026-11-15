@@ -45,3 +45,4 @@ export function getCreditsByVariantId(variantId: string): number {
   );
   return pkg ? pkg.credits : 0;
 }
+

@@ -1,0 +1,492 @@
+2026-11-14T14:29:29.978Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T14:29:32.399Z POST /api/clip/render
+Error: ffmpeg çıkış kodu 234: uration: 00:10:05.81, start: 0.000000, bitrate: 3195 kb/s
+  Stream #0:0[0x1](und): Video: vp9 (Profile 0) (vp09 / 0x39307076), yuv420p(tv, bt709), 1920x1080, 3062 kb/s, 25 fps, 25 tbr, 16k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc. Created on: 11/14/2026.
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp9 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[Parsed_crop_0 @ 0x12b807150] Failed to configure input pad on Parsed_crop_0
+[vf#0:0 @ 0x12b039a00] Error reinitializing filters!
+[vf#0:0 @ 0x12b039a00] Task finished with error code: -22 (Invalid argument)
+[vf#0:0 @ 0x12b039a00] Terminating thread with return code -22 (Invalid argument)
+[vost#0:0/libx264 @ 0x12ae16890] [enc:libx264 @ 0x12ae17050] Could not open encoder before EOF
+[vost#0:0/libx264 @ 0x12ae16890] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 0x12ae16890] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 0x12ae15e40] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=00:00:00.02 bitrate=   0.0kbits/s speed=0.394x elapsed=0:00:00.06    
+[aac @ 0x12ae216f0] Qavg: 21943.975
+Conversion failed!
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at Socket.<anonymous> (node:internal/child_process:526:11)
+    at Socket
+
+2026-11-14T14:29:34.613Z POST /api/clip/render
+Error: ffmpeg çıkış kodu 234: eam #0:0[0x1](und): Video: vp9 (Profile 0) (vp09 / 0x39307076), yuv420p(tv, bt709), 1920x1080, 3062 kb/s, 25 fps, 25 tbr, 16k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc. Created on: 11/14/2026.
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp9 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[Parsed_crop_0 @ 0x1400056c0] Failed to configure input pad on Parsed_crop_0
+[vf#0:0 @ 0x137839600] Error reinitializing filters!
+[vf#0:0 @ 0x137839600] Task finished with error code: -22 (Invalid argument)
+[vf#0:0 @ 0x137839600] Terminating thread with return code -22 (Invalid argument)
+[af#0:1 @ 0x1376224e0] No filtered frames for output stream, trying to initialize anyway.
+[vost#0:0/libx264 @ 0x137616890] [enc:libx264 @ 0x137617050] Could not open encoder before EOF
+[vost#0:0/libx264 @ 0x137616890] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 0x137616890] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 0x137615e40] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:00.02    
+[aac @ 0x1376216f0] Qavg: nan
+Conversion failed!
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T14:29:37.040Z POST /api/clip/render
+Error: ffmpeg çıkış kodu 234: eam #0:0[0x1](und): Video: vp9 (Profile 0) (vp09 / 0x39307076), yuv420p(tv, bt709), 1920x1080, 3062 kb/s, 25 fps, 25 tbr, 16k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc. Created on: 11/14/2026.
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (vp9 (native) -> h264 (libx264))
+  Stream #0:1 -> #0:1 (aac (native) -> aac (native))
+Press [q] to stop, [?] for help
+[Parsed_crop_0 @ 0x1496134e0] Failed to configure input pad on Parsed_crop_0
+[vf#0:0 @ 0x14b030600] Error reinitializing filters!
+[vf#0:0 @ 0x14b030600] Task finished with error code: -22 (Invalid argument)
+[vf#0:0 @ 0x14b030600] Terminating thread with return code -22 (Invalid argument)
+[af#0:1 @ 0x14a812350] No filtered frames for output stream, trying to initialize anyway.
+[vost#0:0/libx264 @ 0x14a806730] [enc:libx264 @ 0x14a806ef0] Could not open encoder before EOF
+[vost#0:0/libx264 @ 0x14a806730] Task finished with error code: -22 (Invalid argument)
+[vost#0:0/libx264 @ 0x14a806730] Terminating thread with return code -22 (Invalid argument)
+[out#0/mp4 @ 0x14a805c70] Nothing was written into output file, because at least one of its streams received no packets.
+frame=    0 fps=0.0 q=0.0 Lsize=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:00.03    
+[aac @ 0x14a811560] Qavg: nan
+Conversion failed!
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at Socket.<anonymous> (node:internal/child_process:526:11)
+    at Socket
+
+2026-11-14T14:56:15.636Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T14:57:12.724Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: wresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgj4kgw/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:48.52, start: 0.000000, bitrate: 8516 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 8344 kb/s, 24.98 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 165 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[AVFilterGraph @ 0x154812380] No option name near 'fx.ass'
+[AVFilterGraph @ 0x154812380] Error parsing a filter description around: 
+[AVFilterGraph @ 0x154812380] Error parsing filterchain 'zoompan=z='if(between((on/25),12.2,13.399999999999999),1+(1.18-1)*min(1,min(((on/25)-12.2)/0.39999999999999974,(13.399999999999999-(on/25))/0.39999999999999974)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,zoompan=z='if(between((on/25),29.4,30.599999999999998),1+(1.22-1)*min(1,min(((on/25)-29.4)/0.39999999999999974,(30.599999999999998-(on/25))/0.39999999999999974)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T14:58:08.498Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T14:59:25.523Z POST /api/fx/apply
+Error: ffmpeg çıkış kodu 234: olbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgj7ey2/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:52.84, start: 0.000000, bitrate: 7398 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 7201 kb/s, 23.18 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 191 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[AVFilterGraph @ 0x159912090] No option name near 'fx.ass'
+[AVFilterGraph @ 0x159912090] Error parsing a filter description around: 
+[AVFilterGraph @ 0x159912090] Error parsing filterchain 'zoompan=z='if(between((on/25),2.8,9.45),1+(1.3-1)*min(1,min(((on/25)-2.8)/0.8,(9.45-(on/25))/0.8)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T14:59:58.968Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/output/ch_mwf370ax6d5x/20261114145814-klip-fkss/video.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:49.04, start: 0.000000, bitrate: 5087 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 4925 kb/s, 25 fps, 25 tbr, 12800 tbn, start 0.040000 (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc. Created on: 11/14/2026.
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 160 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+[AVFilterGraph @ 0x12e006d60] No option name near 'fx.ass'
+[AVFilterGraph @ 0x12e006d60] Error parsing a filter description around: 
+[AVFilterGraph @ 0x12e006d60] Error parsing filterchain 'ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:00:04.447Z POST /api/fx/apply
+Error: ffmpeg çıkış kodu 234: olbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgj88xf/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:52.84, start: 0.000000, bitrate: 7398 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 7201 kb/s, 23.18 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 191 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[AVFilterGraph @ 0x127704bd0] No option name near 'fx.ass'
+[AVFilterGraph @ 0x127704bd0] Error parsing a filter description around: 
+[AVFilterGraph @ 0x127704bd0] Error parsing filterchain 'zoompan=z='if(between((on/25),2.8,9.45),1+(1.3-1)*min(1,min(((on/25)-2.8)/0.8,(9.45-(on/25))/0.8)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at Socket.<anonymous> (node:internal/child_process:526:11)
+    at Socket
+
+2026-11-14T15:01:35.322Z POST /api/fx/apply
+Error: ffmpeg çıkış kodu 234: olbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgja739/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:52.84, start: 0.000000, bitrate: 7398 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 7201 kb/s, 23.18 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 191 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[AVFilterGraph @ 0x155e1ce50] No option name near 'fx.ass'
+[AVFilterGraph @ 0x155e1ce50] Error parsing a filter description around: 
+[AVFilterGraph @ 0x155e1ce50] Error parsing filterchain 'zoompan=z='if(between((on/25),2.8,9.45),1+(1.3-1)*min(1,min(((on/25)-2.8)/0.8,(9.45-(on/25))/0.8)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:03:23.145Z POST /api/fx/apply
+Error: ffmpeg çıkış kodu 234: olbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgjcimt/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:52.96, start: 0.000000, bitrate: 6197 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920, 5999 kb/s, 23.19 fps, 25 tbr, 12800 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 191 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+[AVFilterGraph @ 0x12a004bd0] No option name near 'fx.ass'
+[AVFilterGraph @ 0x12a004bd0] Error parsing a filter description around: 
+[AVFilterGraph @ 0x12a004bd0] Error parsing filterchain 'zoompan=z='if(between((on/25),2.8,9.45),1+(1.3-1)*min(1,min(((on/25)-2.8)/0.8,(9.45-(on/25))/0.8)),1)':x='(iw-iw/zoom)*0.5':y='(ih-ih/zoom)*0.5':d=1:s=1080x1920:fps=25,ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:07:00.343Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T15:07:53.846Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: v1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgjidfs/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:50.92, start: 0.000000, bitrate: 2776 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1408:1407 DAR 264:469], 2608 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 159 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+[AVFilterGraph @ 0x15a807d90] No option name near 'fx.ass'
+[AVFilterGraph @ 0x15a807d90] Error parsing a filter description around: 
+[AVFilterGraph @ 0x15a807d90] Error parsing filterchain 'ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:07:57.388Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: v1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgjig6l/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:50.92, start: 0.000000, bitrate: 2776 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1408:1407 DAR 264:469], 2608 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 159 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+[AVFilterGraph @ 0x126f07d90] No option name near 'fx.ass'
+[AVFilterGraph @ 0x126f07d90] Error parsing a filter description around: 
+[AVFilterGraph @ 0x126f07d90] Error parsing filterchain 'ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:07:58.890Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: v1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgjihby/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:50.92, start: 0.000000, bitrate: 2776 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1408:1407 DAR 264:469], 2608 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 159 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+[AVFilterGraph @ 0x136612b50] No option name near 'fx.ass'
+[AVFilterGraph @ 0x136612b50] Error parsing a filter description around: 
+[AVFilterGraph @ 0x136612b50] Error parsing filterchain 'ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:09:03.854Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T15:09:55.215Z POST /api/fx/recipe
+Error: ffmpeg çıkış kodu 234: v1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/canozgan/Downloads/kesit/work/fx_fx_mwgjkz40/t0.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf63.1.102
+  Duration: 00:00:50.92, start: 0.000000, bitrate: 2776 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1080x1920 [SAR 1408:1407 DAR 264:469], 2608 kb/s, 29.97 fps, 29.97 tbr, 30k tbn (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](eng): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 159 kb/s (default)
+    Metadata:
+      handler_name    : ISO Media file produced by Google Inc.
+[AVFilterGraph @ 0x13e007d90] No option name near 'fx.ass'
+[AVFilterGraph @ 0x13e007d90] Error parsing a filter description around: 
+[AVFilterGraph @ 0x13e007d90] Error parsing filterchain 'ass=fx.ass' around: 
+Error opening output file f.mp4.
+Error opening output files: Invalid argument
+
+    at ChildProcess.<anonymous> (file:///Users/canozgan/Downloads/kesit/lib/util.js:67:21)
+    at ChildProcess.emit (node:events:514:20)
+    at maybeClose (node:internal/child_process:1156:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:334:5)
+
+2026-11-14T15:15:14.218Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:88:94
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:87:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:198:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:497:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1069:19)
+
+2026-11-14T15:17:01.106Z POST /api/clip/segments
+Error: Bu bağlantı artık desteklenmiyor. Soldan başka bir yapay zekâ kaynağı seç.
+    at file:///Users/canozgan/Downloads/kesit/lib/llm.js:152:17
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async complete (file:///Users/canozgan/Downloads/kesit/lib/llm.js:143:17)
+    at async completeJSON (file:///Users/canozgan/Downloads/kesit/lib/llm.js:286:16)
+    at async POST /api/clip/segments (file:///Users/canozgan/Downloads/kesit/server.js:496:17)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1117:19)
+
+2026-11-14T15:19:39.811Z POST /api/clip/fetch
+Error: Video indirilemedi. → Bu video yaş sınırlı. Yaşı doğrulanmış bir Google hesabıyla YouTube'a giriş yapılmış olmalı. En güvenilir yol: tarayıcıdan "Get cookies.txt LOCALLY" eklentisiyle youtube.com çerezlerini dışa aktarıp dosyayı proje klasörüne cookies.txt adıyla koy (Kesit klasörü, server.js yanına). Olmazsa videoyu elle indirip "Video yükle" ile ekleyebilirsin. (Çerez notu: yt-dlp çıkış kodu 1: ERROR: could not find chrome cookies database in "/Users/canozgan/Library/Application Support/Googl)
+    at fetchVideo (file:///Users/canozgan/Downloads/kesit/lib/clipper.js:255:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Server.<anonymous> (file:///Users/canozgan/Downloads/kesit/server.js:1117:19)
+

@@ -1,5 +1,5 @@
 // Stickman Motion Studio — yerel sunucu (bağımlılık yok, sadece Node ≥ 18)
-// Yapay zeka çağrıları senin bilgisayarındaki CLI'lar üzerinden gider → kendi Claude Code / Antigravity (Gemini) token'ın.
+// Yapay zeka çağrıları senin bilgisayarındaki CLI üzerinden gider → Antigravity (Google Gemini) hesabın kullanılır.
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -28,6 +28,7 @@ import {
   topicsPrompt,
   channelPrompt,
   clipsPrompt,
+  scoreSegmentsPrompt,
 } from "./lib/prompt.js";
 import {
   listChannels,
@@ -489,11 +490,9 @@ const routes = {
     if (!meta) throw new Error("Kaynak bulunamadı");
     const length = Math.min(180, Math.max(8, Number(b.length) || 45)),
       count = Math.min(20, Math.max(1, Number(b.count) || 5));
-    if (b.mode === "ai" && b.provider && b.provider !== "offline") {
-      if (!meta.words?.length)
-        throw new Error(
-          'Bu videoda altyazı/transkript yok; yapay zeka seçimi için transkript gerekir. "Eşit böl"ü kullan.',
-        );
+    const hasAI = b.provider && b.provider !== "offline";
+
+    if (b.mode === "ai" && hasAI && meta.words?.length) {
       const j = await completeJSON(
         b.provider,
         clipsPrompt({
@@ -507,7 +506,57 @@ const routes = {
       );
       return snapSegments(meta, j, length);
     }
-    return autoSegments(meta, { length, count });
+
+    // Transkript yoksa veya eşit böl seçildiyse:
+    let segs = autoSegments(meta, { length, count });
+
+    // Seçili yapay zeka varsa (Antigravity Google Gemini veya Kesit AI): bölümleri analiz ettir ve viral skorlarını al
+    if (hasAI && segs.length > 0) {
+      try {
+        const scored = await completeJSON(
+          b.provider,
+          scoreSegmentsPrompt({
+            title: meta.title,
+            segments: segs,
+            language: b.language || "tr",
+            duration: meta.duration,
+          }),
+          { model: b.model, config: getConfig() },
+        );
+        if (Array.isArray(scored)) {
+          const n = (v) =>
+            Math.max(0, Math.min(100, Math.round(Number(v) || 0)));
+          segs = segs.map((s, idx) => {
+            const scObj = scored[idx]?.scores;
+            const sc =
+              scObj && typeof scObj === "object"
+                ? {
+                    hook: n(scObj.hook),
+                    engagement: n(scObj.engagement),
+                    value: n(scObj.value),
+                    shareability: n(scObj.shareability),
+                  }
+                : null;
+            return {
+              ...s,
+              title: scored[idx]?.title || s.title,
+              hook: scored[idx]?.hook || "",
+              reason: scored[idx]?.reason || undefined,
+              scores: sc,
+              score: sc
+                ? Math.round(
+                    (sc.hook + sc.engagement + sc.value + sc.shareability) / 4,
+                  )
+                : null,
+            };
+          });
+        }
+      } catch (e) {
+        console.warn("AI skorlama atlandı:", e.message);
+      }
+    }
+
+    return segs;
   },
   "POST /api/clip/transcribe": async (req) => {
     const b = await readBody(req);
@@ -1136,7 +1185,7 @@ server.listen(PORT, HOST, () => {
     `\n  🎬 Stickman Motion Studio hazır →  http://${HOST === "0.0.0.0" ? "localhost" : HOST}:${PORT}\n`,
   );
   console.log(
-    "  Yapay zeka: claude (Claude Code) / gemini (Antigravity-Google) / codex CLI login token'ın kullanılır.",
+    "  Yapay zeka: Antigravity (Google Gemini) / agy CLI hesabın kullanılır.",
   );
   console.log("  Ses: pip install edge-tts  (400+ ücretsiz neural ses)\n");
 });
